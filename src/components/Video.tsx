@@ -8,24 +8,26 @@ import { ReactComponent as Comments } from '../assets/comments.svg';
 import { ReactComponent as Music } from '../assets/music.svg';
 //@ts-ignore
 import Marquee from 'react-double-marquee';
-
-export interface VideoItem {
-  username: string;
-  description: string;
-  soundName: string;
-  videoURL: string;
-  likeCount: number;
-  commentCount: number;
-  shareCount: number;
-}
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  selectVideos,
+  likeVideo,
+  VideoItem,
+  unlikeVideo,
+} from '../store/screenSlice';
 
 interface OwnProps {
-  item: VideoItem;
+  id: string;
   color: string;
 }
 
 export default function Video(props: OwnProps) {
-  const { item, color } = props;
+  const { id, color } = props;
+
+  const videos = useSelector(selectVideos);
+  const dispatch = useDispatch();
+
+  const item = videos[id];
 
   const [dblClickPos, setDblClickPos] = useState<{
     x: number | null;
@@ -38,6 +40,7 @@ export default function Video(props: OwnProps) {
   const handleDoubleClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
+    dispatch(likeVideo(id));
     setDblClickPos({
       x: event.nativeEvent.clientX,
       y: event.nativeEvent.clientY,
@@ -54,8 +57,8 @@ export default function Video(props: OwnProps) {
     <div
       className="Video"
       style={{
-        backgroundColor: color,
         color: '#fff',
+        borderBottom: '1px solid rgba(0,0,0,.1)',
       }}
       onDoubleClick={handleDoubleClick}
     >
@@ -69,75 +72,105 @@ export default function Video(props: OwnProps) {
           position: 'absolute',
           top: dblClickPos.y ?? 0,
           left: dblClickPos.x ?? 0,
+          zIndex: 100,
         }}
       />
       <div
         style={{
-          display: 'flex',
-          alignItems: 'flex-end',
           height: '100%',
+          width: '100%',
+          position: 'relative',
         }}
       >
+        <video
+          style={{
+            height: '100%',
+            width: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+          }}
+          autoPlay={true}
+        >
+          <source
+            src="https://www.w3schools.com/html/mov_bbb.mp4"
+            type="video/mp4"
+          />
+          <source
+            src="https://www.w3schools.com/html/mov_bbb.ogg"
+            type="video/ogg"
+          />
+          Your browser does not support HTML video.
+        </video>
         <div
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'auto 40px',
-            gridGap: 20,
-            padding: 20,
-            width: '100%',
+            display: 'flex',
+            alignItems: 'flex-end',
+            height: '100%',
           }}
         >
           <div
             style={{
-              display: 'flex',
-              alignContent: 'flex-end',
-              flexDirection: 'column-reverse',
+              display: 'grid',
+              gridTemplateColumns: 'auto 40px',
+              gridGap: 20,
+              padding: 20,
+              width: '100%',
+              zIndex: 1,
             }}
           >
+            <div
+              style={{
+                display: 'flex',
+                alignContent: 'flex-end',
+                flexDirection: 'column-reverse',
+              }}
+            >
+              <div
+                onDoubleClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: '1.1em',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  @{item.username}
+                </div>
+                <div style={{ marginTop: 10, fontSize: '0.9em' }}>
+                  {item.description}
+                </div>
+                <div
+                  style={{
+                    marginTop: 16,
+                    fontSize: '0.9em',
+                    display: 'flex',
+                  }}
+                >
+                  <Music height={16} width={16} fill={'#fff'} />
+                  <div
+                    style={{
+                      marginLeft: 6,
+                      width: 150,
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    <Marquee direction="left" delay={1000}>
+                      {item.soundName}
+                    </Marquee>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div
               onDoubleClick={(e) => {
                 e.stopPropagation();
               }}
             >
-              <div
-                style={{
-                  fontSize: '1.1em',
-                  fontWeight: 'bold',
-                }}
-              >
-                @{item.username}
-              </div>
-              <div style={{ marginTop: 6, fontSize: '0.9em' }}>
-                {item.description}
-              </div>
-              <div
-                style={{
-                  marginTop: 10,
-                  fontSize: '0.9em',
-                  display: 'flex',
-                }}
-              >
-                <Music height={16} width={16} fill={'#fff'} />
-                <div
-                  style={{
-                    marginLeft: 6,
-                    width: 150,
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  <Marquee direction="left" delay={1000}>
-                    {item.soundName}
-                  </Marquee>
-                </div>
-              </div>
+              <VideoOptions item={item} />
             </div>
-          </div>
-          <div
-            onDoubleClick={(e) => {
-              e.stopPropagation();
-            }}
-          >
-            <VideoOptions item={item} />
           </div>
         </div>
       </div>
@@ -147,8 +180,7 @@ export default function Video(props: OwnProps) {
 
 function VideoOptions(props: { item: VideoItem }) {
   const { item } = props;
-
-  const [liked, setLiked] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <div
@@ -158,17 +190,17 @@ function VideoOptions(props: { item: VideoItem }) {
         flexDirection: 'column',
       }}
     >
-      <VideoOption count={liked ? item.likeCount + 1 : item.likeCount}>
-        {liked ? (
+      <VideoOption count={item.likeCount}>
+        {item.liked ? (
           <HeartFilled
-            onClick={() => setLiked(false)}
+            onClick={() => dispatch(unlikeVideo(item.id))}
             height={40}
             width={40}
             fill={'#fff'}
           />
         ) : (
           <Heart
-            onClick={() => setLiked(true)}
+            onClick={() => dispatch(likeVideo(item.id))}
             height={40}
             width={40}
             fill={'#fff'}

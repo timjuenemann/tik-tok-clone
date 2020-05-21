@@ -1,19 +1,13 @@
 import React from 'react';
-import Video, { VideoItem } from './Video';
+import Video from './Video';
 import useScreenDrag from '../common/hooks/screenDragHook';
-
-const videoItem: VideoItem = {
-  username: 'timjuenemann',
-  description: 'This is my cool tiktok',
-  soundName: 'original sound - timjuenemann',
-  videoURL: 'url...',
-  likeCount: 10,
-  commentCount: 0,
-  shareCount: 37,
-};
+import { useSelector } from 'react-redux';
+import { selectVideos } from '../store/screenSlice';
 
 function Screen() {
   const [screenRef] = useScreenDrag();
+
+  const videos = useSelector(selectVideos);
 
   return (
     <div>
@@ -27,10 +21,9 @@ function Screen() {
         }}
         ref={screenRef}
       >
-        <Video item={videoItem} color="red" />
-        <Video item={videoItem} color="blue" />
-        <Video item={videoItem} color="green" />
-        <Video item={videoItem} color="purple" />
+        {Object.keys(videos).map((id) => (
+          <Video key={id} id={id} color="red" />
+        ))}
       </div>
     </div>
   );

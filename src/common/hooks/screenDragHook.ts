@@ -58,7 +58,7 @@ export default function useScreenDrag() {
   }, [node]);
 
   // defines how hard it is to drag to the next video
-  const dragResistance = screenHeight / 5;
+  const dragResistance = screenHeight / 8;
 
   // current scroll position
   const [scrollPos, setScrollPos] = useState(0);
