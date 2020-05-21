@@ -10,3 +10,41 @@
   width: 100%;
   background-color: #666;
 }
+
+.rotatingRecord {
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.dblClickHeart {
+  height: 80px;
+  width: 80px;
+  margin-left: -40px;
+  margin-top: -40px;
+  opacity: 0;
+}
+
+.dblClickHeart.is-active {
+  animation: popUpHeart 400ms linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes popUpHeart {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
