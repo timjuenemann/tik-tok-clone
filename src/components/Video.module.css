@@ -1,0 +1,47 @@
+.Video {
+  height: 100%;
+  width: 100%;
+  background-color: #666;
+  color: #fff;
+}
+
+.videoContainer {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.videoElement {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.gridContainer {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto 40px;
+  grid-gap: 20px;
+  padding: 20px;
+  width: 100%;
+  z-index: 1;
+}
+
+.playButtonContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

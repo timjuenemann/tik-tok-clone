@@ -1,34 +1,66 @@
-/* eslint-disable jsx-a11y/no-distracting-elements */
-import React, { ReactFragment, useState } from 'react';
-import { ReactComponent as Record } from '../assets/record.svg';
-import { ReactComponent as Share } from '../assets/share.svg';
-import { ReactComponent as Heart } from '../assets/heart.svg';
+import React, { useState, useEffect } from 'react';
 import { ReactComponent as HeartFilled } from '../assets/heart_filled.svg';
-import { ReactComponent as Comments } from '../assets/comments.svg';
-import { ReactComponent as Music } from '../assets/music.svg';
-//@ts-ignore
-import Marquee from 'react-double-marquee';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  selectVideos,
-  likeVideo,
-  VideoItem,
-  unlikeVideo,
-} from '../store/screenSlice';
+import { selectVideos, likeVideo } from '../store/screenSlice';
+import VideoDetails from './VideoDetails';
+import classes from './Video.module.css';
+import VideoActions from './VideoActions';
+import { ReactComponent as Play } from '../assets/play.svg';
+
+enum VideoState {
+  play,
+  pause,
+}
 
 interface OwnProps {
   id: string;
-  color: string;
+  active: boolean;
 }
 
-export default function Video(props: OwnProps) {
-  const { id, color } = props;
-
+export default function Video({ id, active }: OwnProps) {
+  // get video by id
   const videos = useSelector(selectVideos);
-  const dispatch = useDispatch();
-
   const item = videos[id];
 
+  const dispatch = useDispatch();
+
+  // get video node
+  const [videoNode, setVideoNode] = useState<HTMLVideoElement | null>(null);
+  const videoRef = (node: any) => {
+    if (node !== null) {
+      setVideoNode(node);
+    }
+  };
+
+  // video state logic (play/pause)
+  const [videoState, setVideoState] = useState<VideoState>(VideoState.pause);
+  useEffect(() => {
+    if (videoNode) {
+      if (videoState === VideoState.play) {
+        videoNode.play();
+      } else {
+        videoNode.pause();
+      }
+    }
+  }, [active, videoNode, videoState]);
+
+  // play video if its currently active
+  useEffect(() => {
+    if (active) {
+      setVideoState(VideoState.play);
+    } else {
+      setVideoState(VideoState.pause);
+    }
+  }, [active]);
+
+  // pause on click
+  const singleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setVideoState(
+      videoState === VideoState.play ? VideoState.pause : VideoState.play
+    );
+  };
+
+  // set doubleClick position
   const [dblClickPos, setDblClickPos] = useState<{
     x: number | null;
     y: number | null;
@@ -37,9 +69,8 @@ export default function Video(props: OwnProps) {
     y: null,
   });
 
-  const handleDoubleClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  // show big heart animation on doubleCLick
+  const doubleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     dispatch(likeVideo(id));
     setDblClickPos({
       x: event.nativeEvent.clientX,
@@ -53,15 +84,26 @@ export default function Video(props: OwnProps) {
     }, 400);
   };
 
+  // handle single and double click
+  const [clickTimer, setClickTimer] = useState<any>(0);
+  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    // normal click
+    if (event.detail === 1) {
+      setClickTimer(
+        setTimeout(() => {
+          singleClick(event);
+        }, 200)
+      );
+    }
+    // double click
+    else if (event.detail === 2) {
+      clearTimeout(clickTimer);
+      doubleClick(event);
+    }
+  };
+
   return (
-    <div
-      className="Video"
-      style={{
-        color: '#fff',
-        borderBottom: '1px solid rgba(0,0,0,.1)',
-      }}
-      onDoubleClick={handleDoubleClick}
-    >
+    <div className={classes.Video} onClick={handleClick}>
       {/* heart that pops up on dblClick */}
       <HeartFilled
         fill={'#fff'}
@@ -75,176 +117,28 @@ export default function Video(props: OwnProps) {
           zIndex: 100,
         }}
       />
-      <div
-        style={{
-          height: '100%',
-          width: '100%',
-          position: 'relative',
-        }}
-      >
-        <video
-          style={{
-            height: '100%',
-            width: '100%',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-          }}
-          autoPlay={true}
-        >
+      <div className={classes.videoContainer}>
+        {/* video element */}
+        <video ref={videoRef} className={classes.videoElement} loop>
           <source
-            src="https://www.w3schools.com/html/mov_bbb.mp4"
+            src={process.env.PUBLIC_URL + item.videoURL}
             type="video/mp4"
-          />
-          <source
-            src="https://www.w3schools.com/html/mov_bbb.ogg"
-            type="video/ogg"
           />
           Your browser does not support HTML video.
         </video>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'flex-end',
-            height: '100%',
-          }}
-        >
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'auto 40px',
-              gridGap: 20,
-              padding: 20,
-              width: '100%',
-              zIndex: 1,
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignContent: 'flex-end',
-                flexDirection: 'column-reverse',
-              }}
-            >
-              <div
-                onDoubleClick={(e) => {
-                  e.stopPropagation();
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: '1.1em',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  @{item.username}
-                </div>
-                <div style={{ marginTop: 10, fontSize: '0.9em' }}>
-                  {item.description}
-                </div>
-                <div
-                  style={{
-                    marginTop: 16,
-                    fontSize: '0.9em',
-                    display: 'flex',
-                  }}
-                >
-                  <Music height={16} width={16} fill={'#fff'} />
-                  <div
-                    style={{
-                      marginLeft: 6,
-                      width: 150,
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    <Marquee direction="left" delay={1000}>
-                      {item.soundName}
-                    </Marquee>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              onDoubleClick={(e) => {
-                e.stopPropagation();
-              }}
-            >
-              <VideoOptions item={item} />
-            </div>
+        {/* show playButton if video is paused */}
+        {videoState === VideoState.pause && active ? (
+          <div className={classes.playButtonContainer}>
+            <Play height={80} width={80} fill={'#fff'} />
+          </div>
+        ) : null}
+        {/* Video details and actions */}
+        <div className={classes.gridContainer}>
+          <div className={classes.grid}>
+            <VideoDetails item={item} />
+            <VideoActions item={item} />
           </div>
         </div>
-      </div>
-    </div>
-  );
-}
-
-function VideoOptions(props: { item: VideoItem }) {
-  const { item } = props;
-  const dispatch = useDispatch();
-
-  return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-      }}
-    >
-      <VideoOption count={item.likeCount}>
-        {item.liked ? (
-          <HeartFilled
-            onClick={() => dispatch(unlikeVideo(item.id))}
-            height={40}
-            width={40}
-            fill={'#fff'}
-          />
-        ) : (
-          <Heart
-            onClick={() => dispatch(likeVideo(item.id))}
-            height={40}
-            width={40}
-            fill={'#fff'}
-          />
-        )}
-      </VideoOption>
-      <VideoOption count={item.commentCount}>
-        <Comments height={35} width={35} fill={'#fff'} />
-      </VideoOption>
-      <VideoOption count={item.shareCount}>
-        <Share height={35} width={35} fill={'#fff'} />
-      </VideoOption>
-
-      <Record
-        height={40}
-        width={40}
-        className="rotatingRecord"
-        style={{
-          marginTop: 30,
-        }}
-      />
-    </div>
-  );
-}
-
-function VideoOption(props: { children: ReactFragment; count: number }) {
-  return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        fontWeight: 'bold',
-        fontSize: '.8em',
-        marginTop: 15,
-      }}
-    >
-      {props.children}
-      <div
-        style={{
-          marginTop: 5,
-        }}
-      >
-        {props.count}
       </div>
     </div>
   );

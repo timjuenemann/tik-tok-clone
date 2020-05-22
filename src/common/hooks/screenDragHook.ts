@@ -63,15 +63,20 @@ export default function useScreenDrag() {
   // current scroll position
   const [scrollPos, setScrollPos] = useState(0);
 
+  const [activeView, setActiveView] = useState(0);
+
   // check if scrollPos is within range
   const scrollPosCheck = (num: number) => {
     if (node) {
       if (num <= 0) {
+        setActiveView(0);
         return 0;
       } else if (num >= node.scrollHeight - screenHeight) {
+        setActiveView(Math.round(num / screenHeight));
         return node.scrollHeight - screenHeight;
       }
     }
+    setActiveView(Math.round(num / screenHeight));
     return num;
   };
 
@@ -99,5 +104,5 @@ export default function useScreenDrag() {
     }
   }, [dragDistance, isDragging, node, scrollPos]);
 
-  return [ref] as const;
+  return [ref, activeView] as const;
 }

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "username": "timjuenemann",
+    "description": "This is evee digging #rabbit",
+    "soundName": "original sound - timjuenemann",
+    "videoURL": "/videos/video_1.mp4",
+    "likeCount": 10,
+    "commentCount": 0,
+    "shareCount": 37,
+    "liked": false
+  },
+  {
+    "id": "2",
+    "username": "timjuenemann",
+    "description": "This is my cool tiktok",
+    "soundName": "original sound - timjuenemann",
+    "videoURL": "/videos/video_2.mp4",
+    "likeCount": 10,
+    "commentCount": 0,
+    "shareCount": 37,
+    "liked": false
+  },
+  {
+    "id": "3",
+    "username": "timjuenemann",
+    "description": "This is my cool tiktok",
+    "soundName": "original sound - timjuenemann",
+    "videoURL": "/videos/video_3.mp4",
+    "likeCount": 10,
+    "commentCount": 0,
+    "shareCount": 37,
+    "liked": false
+  }
+]

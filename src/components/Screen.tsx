@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Video from './Video';
 import useScreenDrag from '../common/hooks/screenDragHook';
-import { useSelector } from 'react-redux';
-import { selectVideos } from '../store/screenSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  setActiveView,
+  selectSortedVideoIds,
+  selectActiveVideoId,
+} from '../store/screenSlice';
 
 function Screen() {
-  const [screenRef] = useScreenDrag();
+  const [screenRef, activeView] = useScreenDrag();
+  const dispatch = useDispatch();
 
-  const videos = useSelector(selectVideos);
+  useEffect(() => {
+    dispatch(setActiveView(activeView));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeView]);
+
+  const sortedVideoIds = useSelector(selectSortedVideoIds);
+  const activeVideoId = useSelector(selectActiveVideoId);
 
   return (
     <div>
@@ -21,8 +32,8 @@ function Screen() {
         }}
         ref={screenRef}
       >
-        {Object.keys(videos).map((id) => (
-          <Video key={id} id={id} color="red" />
+        {sortedVideoIds.map((id) => (
+          <Video key={id} id={id} active={id === activeVideoId} />
         ))}
       </div>
     </div>
