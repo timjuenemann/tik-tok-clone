@@ -25,7 +25,7 @@ function App() {
   useLayoutEffect(() => {
     smoothscroll.polyfill();
     setViewport();
-  }, []);
+  });
 
   return (
     <div className="App">
