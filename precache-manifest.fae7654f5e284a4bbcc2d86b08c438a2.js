@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cc9075f1dd1670a846a7f7f6c81a62d7",
+    "revision": "316050a97d0ff2fb847216d7199107fa",
     "url": "/tik-tok-clone/index.html"
   },
   {
-    "revision": "1724bc6ce472ee13ebfc",
+    "revision": "8b3238fcba52a30e30ae",
     "url": "/tik-tok-clone/static/css/main.43058c0c.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/tik-tok-clone/static/js/2.d6f99f0b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1724bc6ce472ee13ebfc",
-    "url": "/tik-tok-clone/static/js/main.37440bf7.chunk.js"
+    "revision": "8b3238fcba52a30e30ae",
+    "url": "/tik-tok-clone/static/js/main.8bc076ee.chunk.js"
   },
   {
     "revision": "7df3b5e3d3d34ca8c858",
