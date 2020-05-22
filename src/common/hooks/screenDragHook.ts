@@ -12,42 +12,59 @@ export default function useScreenDrag() {
   // indicates wheather the screen is currently dragged by the user
   const [isDragging, setIsDragging] = useState(false);
 
-  // set `isDragging` to true as soon as a mousedown event is registered
-  useEffect(() => {
-    const handleMouseDown = () => setIsDragging(true);
-
-    if (node) {
-      node.addEventListener('mousedown', handleMouseDown);
-      return () => node.removeEventListener('mousedown', handleMouseDown);
-    }
-  }, [node]);
-
-  // set `isDragging` to true as soon as a mouseup event is registered in the window scope
-  useEffect(() => {
-    const handleMouseUp = () => setIsDragging(false);
-
-    if (node) {
-      window.addEventListener('mouseup', handleMouseUp);
-      return () => window.removeEventListener('mouseup', handleMouseUp);
-    }
-  });
-
   // defines the drag distance since the drag started
   const [dragDistance, setDragDistance] = useState(0);
 
-  // set drag distance from mousemove
+  // handle mouse event listeners
   useEffect(() => {
+    const handleMouseDown = () => setIsDragging(true);
+    const handleMouseUp = () => setIsDragging(false);
     const handleMouseMove = (event: MouseEvent) => {
       if (isDragging) {
+        console.log(event.movementY);
         setDragDistance((d) => d + event.movementY);
       }
     };
 
     if (node) {
+      node.addEventListener('mousedown', handleMouseDown);
+      window.addEventListener('mouseup', handleMouseUp);
       node.addEventListener('mousemove', handleMouseMove);
-      return () => node.removeEventListener('mousemove', handleMouseMove);
+      return () => {
+        node.removeEventListener('mousedown', handleMouseDown);
+        window.removeEventListener('mouseup', handleMouseUp);
+        node.removeEventListener('mousemove', handleMouseMove);
+      };
     }
-  });
+  }, [isDragging, node]);
+
+  // handle touch event listeners
+  const [prevTouchPos, setlPrevTouchPos] = useState(0);
+  useEffect(() => {
+    const handleTouchStart = (event: TouchEvent) => {
+      setlPrevTouchPos(event.touches[0].clientY);
+      setIsDragging(true);
+    };
+    const handleTouchEnd = () => setIsDragging(false);
+    const handleTouchMove = (event: TouchEvent) => {
+      const newTouchPos = event.changedTouches[0].clientY;
+      if (isDragging) {
+        setDragDistance((d) => d + newTouchPos - prevTouchPos);
+      }
+      setlPrevTouchPos(newTouchPos);
+    };
+
+    if (node) {
+      node.addEventListener('touchstart', handleTouchStart);
+      node.addEventListener('touchend', handleTouchEnd);
+      node.addEventListener('touchmove', handleTouchMove);
+      return () => {
+        node.removeEventListener('touchstart', handleTouchStart);
+        window.removeEventListener('touchend', handleTouchEnd);
+        node.removeEventListener('touchmove', handleTouchMove);
+      };
+    }
+  }, [isDragging, node, prevTouchPos]);
 
   // set screen height
   const [screenHeight, setScreenHeight] = useState(0);
@@ -63,6 +80,7 @@ export default function useScreenDrag() {
   // current scroll position
   const [scrollPos, setScrollPos] = useState(0);
 
+  // set currently active slide
   const [activeView, setActiveView] = useState(0);
 
   // check if scrollPos is within range
