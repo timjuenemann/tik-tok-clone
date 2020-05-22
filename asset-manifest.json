@@ -1,28 +1,29 @@
 {
   "files": {
-    "main.css": "/tik-tok-clone/static/css/main.ce6b4d26.chunk.css",
-    "main.js": "/tik-tok-clone/static/js/main.d1e1b7eb.chunk.js",
-    "main.js.map": "/tik-tok-clone/static/js/main.d1e1b7eb.chunk.js.map",
+    "main.css": "/tik-tok-clone/static/css/main.4ca0baa8.chunk.css",
+    "main.js": "/tik-tok-clone/static/js/main.bd9bba8b.chunk.js",
+    "main.js.map": "/tik-tok-clone/static/js/main.bd9bba8b.chunk.js.map",
     "runtime-main.js": "/tik-tok-clone/static/js/runtime-main.1367e304.js",
     "runtime-main.js.map": "/tik-tok-clone/static/js/runtime-main.1367e304.js.map",
-    "static/js/2.2fd83043.chunk.js": "/tik-tok-clone/static/js/2.2fd83043.chunk.js",
-    "static/js/2.2fd83043.chunk.js.map": "/tik-tok-clone/static/js/2.2fd83043.chunk.js.map",
+    "static/js/2.ac1fd5f0.chunk.js": "/tik-tok-clone/static/js/2.ac1fd5f0.chunk.js",
+    "static/js/2.ac1fd5f0.chunk.js.map": "/tik-tok-clone/static/js/2.ac1fd5f0.chunk.js.map",
     "index.html": "/tik-tok-clone/index.html",
-    "precache-manifest.264d4a600ecda22f7dbdf60c6b06ffcc.js": "/tik-tok-clone/precache-manifest.264d4a600ecda22f7dbdf60c6b06ffcc.js",
+    "precache-manifest.0becbcab10237825eeb322a404dfacde.js": "/tik-tok-clone/precache-manifest.0becbcab10237825eeb322a404dfacde.js",
     "service-worker.js": "/tik-tok-clone/service-worker.js",
-    "static/css/main.ce6b4d26.chunk.css.map": "/tik-tok-clone/static/css/main.ce6b4d26.chunk.css.map",
-    "static/js/2.2fd83043.chunk.js.LICENSE.txt": "/tik-tok-clone/static/js/2.2fd83043.chunk.js.LICENSE.txt",
+    "static/css/main.4ca0baa8.chunk.css.map": "/tik-tok-clone/static/css/main.4ca0baa8.chunk.css.map",
+    "static/js/2.ac1fd5f0.chunk.js.LICENSE.txt": "/tik-tok-clone/static/js/2.ac1fd5f0.chunk.js.LICENSE.txt",
     "static/media/comments.c59dcb3b.svg": "/tik-tok-clone/static/media/comments.c59dcb3b.svg",
     "static/media/heart.c7ecf461.svg": "/tik-tok-clone/static/media/heart.c7ecf461.svg",
     "static/media/heart_filled.d9b06de9.svg": "/tik-tok-clone/static/media/heart_filled.d9b06de9.svg",
     "static/media/music.aabdc9a5.svg": "/tik-tok-clone/static/media/music.aabdc9a5.svg",
+    "static/media/play.1501131e.svg": "/tik-tok-clone/static/media/play.1501131e.svg",
     "static/media/record.8c0291bf.svg": "/tik-tok-clone/static/media/record.8c0291bf.svg",
     "static/media/share.148b91be.svg": "/tik-tok-clone/static/media/share.148b91be.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.1367e304.js",
-    "static/js/2.2fd83043.chunk.js",
-    "static/css/main.ce6b4d26.chunk.css",
-    "static/js/main.d1e1b7eb.chunk.js"
+    "static/js/2.ac1fd5f0.chunk.js",
+    "static/css/main.4ca0baa8.chunk.css",
+    "static/js/main.bd9bba8b.chunk.js"
   ]
 }
