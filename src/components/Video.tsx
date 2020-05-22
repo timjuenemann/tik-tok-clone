@@ -12,12 +12,7 @@ enum VideoState {
   pause,
 }
 
-interface OwnProps {
-  id: string;
-  active: boolean;
-}
-
-export default function Video({ id, active }: OwnProps) {
+export default function Video({ id, active }: { id: string; active: boolean }) {
   // get video by id
   const videos = useSelector(selectVideos);
   const item = videos[id];
@@ -26,7 +21,7 @@ export default function Video({ id, active }: OwnProps) {
 
   // get video node
   const [videoNode, setVideoNode] = useState<HTMLVideoElement | null>(null);
-  const videoRef = (node: any) => {
+  const videoRef = (node: HTMLVideoElement) => {
     if (node !== null) {
       setVideoNode(node);
     }
@@ -54,7 +49,7 @@ export default function Video({ id, active }: OwnProps) {
   }, [active]);
 
   // pause on click
-  const singleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const singleClick = () => {
     setVideoState(
       videoState === VideoState.play ? VideoState.pause : VideoState.play
     );
@@ -91,7 +86,7 @@ export default function Video({ id, active }: OwnProps) {
     if (event.detail === 1) {
       setClickTimer(
         setTimeout(() => {
-          singleClick(event);
+          singleClick();
         }, 200)
       );
     }

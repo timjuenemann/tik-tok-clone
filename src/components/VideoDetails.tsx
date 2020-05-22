@@ -5,11 +5,7 @@ import * as Marquee from 'react-double-marquee';
 import { VideoItem } from '../store/screenSlice';
 import classes from './Video.module.css';
 
-interface OwnProps {
-  item: VideoItem;
-}
-
-export default function VideoDetails({ item }: OwnProps) {
+export default function VideoDetails({ item }: { item: VideoItem }) {
   return (
     <div
       style={{
