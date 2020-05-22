@@ -4,6 +4,7 @@ import { ReactComponent as Music } from '../assets/svg/music.svg';
 //@ts-ignore
 import Marquee from 'react-double-marquee';
 import { VideoItem } from '../store/screenSlice';
+import classes from './Video.module.css';
 
 interface OwnProps {
   item: VideoItem;
@@ -49,6 +50,7 @@ export default function VideoDetails({ item }: OwnProps) {
               width: 180,
               whiteSpace: 'nowrap',
             }}
+            className={classes.marquee}
           >
             <Marquee direction="left" delay={1000}>
               {item.soundName}

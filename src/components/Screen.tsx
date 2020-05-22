@@ -22,16 +22,7 @@ function Screen() {
 
   return (
     <div>
-      <div
-        style={{
-          height: 800,
-          width: 450,
-          backgroundColor: '#000',
-          overflow: 'hidden',
-          userSelect: 'none',
-        }}
-        ref={screenRef}
-      >
+      <div className="Screen" ref={screenRef}>
         {sortedVideoIds.map((id) => (
           <Video key={id} id={id} active={id === activeVideoId} />
         ))}

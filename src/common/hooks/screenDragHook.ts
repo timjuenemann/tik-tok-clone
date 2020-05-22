@@ -67,11 +67,19 @@ export default function useScreenDrag() {
 
   // set screen height
   const [screenHeight, setScreenHeight] = useState(0);
-  useEffect(() => {
+  const getScreenHeight = useCallback(() => {
     if (node) {
       setScreenHeight(node.getBoundingClientRect().height);
     }
   }, [node]);
+
+  useEffect(() => {
+    getScreenHeight();
+
+    const handleResize = () => getScreenHeight();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [getScreenHeight, node]);
 
   // defines how hard it is to drag to the next video
   const dragResistance = screenHeight / 8;

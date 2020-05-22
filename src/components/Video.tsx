@@ -119,7 +119,7 @@ export default function Video({ id, active }: OwnProps) {
       />
       <div className={classes.videoContainer}>
         {/* video element */}
-        <video ref={videoRef} className={classes.videoElement} loop>
+        <video ref={videoRef} className={classes.videoElement} loop playsInline>
           <source
             src={process.env.PUBLIC_URL + item.videoURL}
             type="video/mp4"

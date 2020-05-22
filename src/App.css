@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .rotatingRecord {
@@ -40,5 +41,21 @@
   100% {
     opacity: 0;
     transform: scale(3);
+  }
+}
+
+.Screen {
+  height: 800px;
+  width: 450px;
+  background-color: #000;
+  overflow: hidden;
+  user-select: none;
+}
+
+@media (max-width: 700px) {
+  .Screen {
+    width: 100vw;
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
   }
 }
