@@ -1,8 +1,7 @@
-/* eslint-disable jsx-a11y/no-distracting-elements */
 import React from 'react';
 import { ReactComponent as Music } from '../assets/svg/music.svg';
-//@ts-ignore
-import Marquee from 'react-double-marquee';
+// @ts-ignore
+import * as Marquee from 'react-double-marquee';
 import { VideoItem } from '../store/screenSlice';
 import classes from './Video.module.css';
 

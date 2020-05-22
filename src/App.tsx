@@ -1,7 +1,6 @@
 import React, { useState, useLayoutEffect } from 'react';
 import './App.css';
 import Screen from './components/Screen';
-// @ts-ignore
 import * as smoothscroll from 'smoothscroll-polyfill';
 
 function App() {
@@ -12,16 +11,14 @@ function App() {
     event.preventDefault();
   };
 
+  // mobile viewport fix
   const setViewport = () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   };
-
   window.onresize = function () {
-    console.log('resize');
     setViewport();
   };
-
   useLayoutEffect(() => {
     smoothscroll.polyfill();
     setViewport();
