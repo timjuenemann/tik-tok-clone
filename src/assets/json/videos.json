@@ -2,7 +2,7 @@
   {
     "id": "1",
     "username": "timjuenemann",
-    "description": "This is evee digging",
+    "description": "Theo discovers the outdoor run",
     "hashtags": ["rabbit", "bunny"],
     "soundName": "original sound - timjuenemann",
     "videoURL": "/videos/video_1.mp4",
@@ -26,8 +26,8 @@
   {
     "id": "3",
     "username": "timjuenemann",
-    "description": "This is my cool tiktok",
-    "hashtags": [],
+    "description": "This is evee digging",
+    "hashtags": ["bunny", "digging"],
     "soundName": "original sound - timjuenemann",
     "videoURL": "/videos/video_3.mp4",
     "likeCount": 42,
