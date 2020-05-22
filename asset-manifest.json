@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/tik-tok-clone/static/css/main.43058c0c.chunk.css",
-    "main.js": "/tik-tok-clone/static/js/main.8bc076ee.chunk.js",
-    "main.js.map": "/tik-tok-clone/static/js/main.8bc076ee.chunk.js.map",
+    "main.js": "/tik-tok-clone/static/js/main.9796b776.chunk.js",
+    "main.js.map": "/tik-tok-clone/static/js/main.9796b776.chunk.js.map",
     "runtime-main.js": "/tik-tok-clone/static/js/runtime-main.1367e304.js",
     "runtime-main.js.map": "/tik-tok-clone/static/js/runtime-main.1367e304.js.map",
     "static/js/2.d6f99f0b.chunk.js": "/tik-tok-clone/static/js/2.d6f99f0b.chunk.js",
     "static/js/2.d6f99f0b.chunk.js.map": "/tik-tok-clone/static/js/2.d6f99f0b.chunk.js.map",
     "index.html": "/tik-tok-clone/index.html",
-    "precache-manifest.fae7654f5e284a4bbcc2d86b08c438a2.js": "/tik-tok-clone/precache-manifest.fae7654f5e284a4bbcc2d86b08c438a2.js",
+    "precache-manifest.7f37c7cb6b5fbab14915b616b91913ec.js": "/tik-tok-clone/precache-manifest.7f37c7cb6b5fbab14915b616b91913ec.js",
     "service-worker.js": "/tik-tok-clone/service-worker.js",
     "static/css/main.43058c0c.chunk.css.map": "/tik-tok-clone/static/css/main.43058c0c.chunk.css.map",
     "static/js/2.d6f99f0b.chunk.js.LICENSE.txt": "/tik-tok-clone/static/js/2.d6f99f0b.chunk.js.LICENSE.txt",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.1367e304.js",
     "static/js/2.d6f99f0b.chunk.js",
     "static/css/main.43058c0c.chunk.css",
-    "static/js/main.8bc076ee.chunk.js"
+    "static/js/main.9796b776.chunk.js"
   ]
 }
