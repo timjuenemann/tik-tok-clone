@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 import React from 'react';
-import { ReactComponent as Music } from '../assets/music.svg';
+import { ReactComponent as Music } from '../assets/svg/music.svg';
 //@ts-ignore
 import Marquee from 'react-double-marquee';
 import { VideoItem } from '../store/screenSlice';
@@ -28,7 +28,12 @@ export default function VideoDetails({ item }: OwnProps) {
           @{item.username}
         </div>
         <div style={{ marginTop: 10, fontSize: '0.9em' }}>
-          {item.description}
+          {item.description}{' '}
+          {item.hashtags.map((name) => (
+            <span key={name}>
+              <strong>#{name}</strong>{' '}
+            </span>
+          ))}
         </div>
         <div
           style={{

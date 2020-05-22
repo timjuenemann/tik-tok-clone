@@ -21,7 +21,6 @@ export default function useScreenDrag() {
     const handleMouseUp = () => setIsDragging(false);
     const handleMouseMove = (event: MouseEvent) => {
       if (isDragging) {
-        console.log(event.movementY);
         setDragDistance((d) => d + event.movementY);
       }
     };
@@ -90,12 +89,16 @@ export default function useScreenDrag() {
         setActiveView(0);
         return 0;
       } else if (num >= node.scrollHeight - screenHeight) {
-        setActiveView(Math.round(num / screenHeight));
+        setActiveView(
+          Math.round((node.scrollHeight - screenHeight) / screenHeight)
+        );
         return node.scrollHeight - screenHeight;
+      } else {
+        setActiveView(Math.round(num / screenHeight));
+        return num;
       }
     }
-    setActiveView(Math.round(num / screenHeight));
-    return num;
+    return scrollPos;
   };
 
   // resets the drag distance when `isDragging` returns to false

@@ -2,34 +2,37 @@
   {
     "id": "1",
     "username": "timjuenemann",
-    "description": "This is evee digging #rabbit",
+    "description": "This is evee digging",
+    "hashtags": ["rabbit", "bunny"],
     "soundName": "original sound - timjuenemann",
     "videoURL": "/videos/video_1.mp4",
-    "likeCount": 10,
+    "likeCount": 254,
     "commentCount": 0,
-    "shareCount": 37,
+    "shareCount": 14,
     "liked": false
   },
   {
     "id": "2",
     "username": "timjuenemann",
-    "description": "This is my cool tiktok",
+    "description": "Theo and evee eating some",
+    "hashtags": ["salad"],
     "soundName": "original sound - timjuenemann",
     "videoURL": "/videos/video_2.mp4",
-    "likeCount": 10,
+    "likeCount": 463,
     "commentCount": 0,
-    "shareCount": 37,
+    "shareCount": 39,
     "liked": false
   },
   {
     "id": "3",
     "username": "timjuenemann",
     "description": "This is my cool tiktok",
+    "hashtags": [],
     "soundName": "original sound - timjuenemann",
     "videoURL": "/videos/video_3.mp4",
-    "likeCount": 10,
+    "likeCount": 42,
     "commentCount": 0,
-    "shareCount": 37,
+    "shareCount": 3,
     "liked": false
   }
 ]

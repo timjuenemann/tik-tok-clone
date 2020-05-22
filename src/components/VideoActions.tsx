@@ -1,9 +1,9 @@
 import React, { ReactFragment } from 'react';
-import { ReactComponent as Record } from '../assets/record.svg';
-import { ReactComponent as Share } from '../assets/share.svg';
-import { ReactComponent as Heart } from '../assets/heart.svg';
-import { ReactComponent as HeartFilled } from '../assets/heart_filled.svg';
-import { ReactComponent as Comments } from '../assets/comments.svg';
+import { ReactComponent as Record } from '../assets/svg/record.svg';
+import { ReactComponent as Share } from '../assets/svg/share.svg';
+import { ReactComponent as Heart } from '../assets/svg/heart.svg';
+import { ReactComponent as HeartFilled } from '../assets/svg/heart_filled.svg';
+import { ReactComponent as Comments } from '../assets/svg/comments.svg';
 import { useDispatch } from 'react-redux';
 import { likeVideo, VideoItem, unlikeVideo } from '../store/screenSlice';
 
@@ -65,10 +65,16 @@ function VideoAction(props: { children: ReactFragment; count: number }) {
         alignItems: 'center',
         fontWeight: 'bold',
         fontSize: '.8em',
-        marginTop: 15,
+        marginTop: 20,
       }}
     >
-      {props.children}
+      <div
+        style={{
+          cursor: 'pointer',
+        }}
+      >
+        {props.children}
+      </div>
       <div
         style={{
           marginTop: 5,

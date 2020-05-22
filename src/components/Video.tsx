@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ReactComponent as HeartFilled } from '../assets/heart_filled.svg';
+import { ReactComponent as HeartFilled } from '../assets/svg/heart_filled.svg';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectVideos, likeVideo } from '../store/screenSlice';
 import VideoDetails from './VideoDetails';
 import classes from './Video.module.css';
 import VideoActions from './VideoActions';
-import { ReactComponent as Play } from '../assets/play.svg';
+import { ReactComponent as Play } from '../assets/svg/play.svg';
 
 enum VideoState {
   play,
@@ -36,10 +36,10 @@ export default function Video({ id, active }: OwnProps) {
   const [videoState, setVideoState] = useState<VideoState>(VideoState.pause);
   useEffect(() => {
     if (videoNode) {
-      if (videoState === VideoState.play) {
-        videoNode.play();
-      } else {
+      if (videoState === VideoState.pause || !active) {
         videoNode.pause();
+      } else {
+        videoNode.play();
       }
     }
   }, [active, videoNode, videoState]);

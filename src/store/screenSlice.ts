@@ -6,6 +6,7 @@ export interface VideoItem {
   id: string;
   username: string;
   description: string;
+  hashtags: string[];
   soundName: string;
   videoURL: string;
   likeCount: number;
@@ -30,7 +31,7 @@ interface ScreenState {
 
 const initialState: ScreenState = {
   activeView: 0,
-  videos: normalize(require('../assets/videos.json'), [videoEntity]),
+  videos: normalize(require('../assets/json/videos.json'), [videoEntity]),
 };
 
 export const screenSlice = createSlice({
