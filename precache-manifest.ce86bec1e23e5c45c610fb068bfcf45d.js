@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "af9e62f4504b65fc4454bcdff0503801",
+    "revision": "cc9075f1dd1670a846a7f7f6c81a62d7",
     "url": "/tik-tok-clone/index.html"
   },
   {
-    "revision": "2ce891c897797120ccb8",
-    "url": "/tik-tok-clone/static/css/main.4ca0baa8.chunk.css"
+    "revision": "1724bc6ce472ee13ebfc",
+    "url": "/tik-tok-clone/static/css/main.43058c0c.chunk.css"
   },
   {
-    "revision": "7fb0b3a2e2381d6b8e07",
-    "url": "/tik-tok-clone/static/js/2.ac1fd5f0.chunk.js"
+    "revision": "3f867f0d06250c59b10b",
+    "url": "/tik-tok-clone/static/js/2.d6f99f0b.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/tik-tok-clone/static/js/2.ac1fd5f0.chunk.js.LICENSE.txt"
+    "url": "/tik-tok-clone/static/js/2.d6f99f0b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2ce891c897797120ccb8",
-    "url": "/tik-tok-clone/static/js/main.bd9bba8b.chunk.js"
+    "revision": "1724bc6ce472ee13ebfc",
+    "url": "/tik-tok-clone/static/js/main.37440bf7.chunk.js"
   },
   {
     "revision": "7df3b5e3d3d34ca8c858",

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/tik-tok-clone/precache-manifest.0becbcab10237825eeb322a404dfacde.js"
+  "/tik-tok-clone/precache-manifest.ce86bec1e23e5c45c610fb068bfcf45d.js"
 );
 
 self.addEventListener('message', (event) => {

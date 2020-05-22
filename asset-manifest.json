@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/tik-tok-clone/static/css/main.4ca0baa8.chunk.css",
-    "main.js": "/tik-tok-clone/static/js/main.bd9bba8b.chunk.js",
-    "main.js.map": "/tik-tok-clone/static/js/main.bd9bba8b.chunk.js.map",
+    "main.css": "/tik-tok-clone/static/css/main.43058c0c.chunk.css",
+    "main.js": "/tik-tok-clone/static/js/main.37440bf7.chunk.js",
+    "main.js.map": "/tik-tok-clone/static/js/main.37440bf7.chunk.js.map",
     "runtime-main.js": "/tik-tok-clone/static/js/runtime-main.1367e304.js",
     "runtime-main.js.map": "/tik-tok-clone/static/js/runtime-main.1367e304.js.map",
-    "static/js/2.ac1fd5f0.chunk.js": "/tik-tok-clone/static/js/2.ac1fd5f0.chunk.js",
-    "static/js/2.ac1fd5f0.chunk.js.map": "/tik-tok-clone/static/js/2.ac1fd5f0.chunk.js.map",
+    "static/js/2.d6f99f0b.chunk.js": "/tik-tok-clone/static/js/2.d6f99f0b.chunk.js",
+    "static/js/2.d6f99f0b.chunk.js.map": "/tik-tok-clone/static/js/2.d6f99f0b.chunk.js.map",
     "index.html": "/tik-tok-clone/index.html",
-    "precache-manifest.0becbcab10237825eeb322a404dfacde.js": "/tik-tok-clone/precache-manifest.0becbcab10237825eeb322a404dfacde.js",
+    "precache-manifest.ce86bec1e23e5c45c610fb068bfcf45d.js": "/tik-tok-clone/precache-manifest.ce86bec1e23e5c45c610fb068bfcf45d.js",
     "service-worker.js": "/tik-tok-clone/service-worker.js",
-    "static/css/main.4ca0baa8.chunk.css.map": "/tik-tok-clone/static/css/main.4ca0baa8.chunk.css.map",
-    "static/js/2.ac1fd5f0.chunk.js.LICENSE.txt": "/tik-tok-clone/static/js/2.ac1fd5f0.chunk.js.LICENSE.txt",
+    "static/css/main.43058c0c.chunk.css.map": "/tik-tok-clone/static/css/main.43058c0c.chunk.css.map",
+    "static/js/2.d6f99f0b.chunk.js.LICENSE.txt": "/tik-tok-clone/static/js/2.d6f99f0b.chunk.js.LICENSE.txt",
     "static/media/comments.c59dcb3b.svg": "/tik-tok-clone/static/media/comments.c59dcb3b.svg",
     "static/media/heart.c7ecf461.svg": "/tik-tok-clone/static/media/heart.c7ecf461.svg",
     "static/media/heart_filled.d9b06de9.svg": "/tik-tok-clone/static/media/heart_filled.d9b06de9.svg",
@@ -22,8 +22,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.1367e304.js",
-    "static/js/2.ac1fd5f0.chunk.js",
-    "static/css/main.4ca0baa8.chunk.css",
-    "static/js/main.bd9bba8b.chunk.js"
+    "static/js/2.d6f99f0b.chunk.js",
+    "static/css/main.43058c0c.chunk.css",
+    "static/js/main.37440bf7.chunk.js"
   ]
 }
